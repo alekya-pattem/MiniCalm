@@ -6,3 +6,33 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
+
+@MainActor
+final class LibraryViewModel: ObservableObject {
+    
+    @Published var sessions     : [Session] = []
+    @Published var isLoading    : Bool = false
+    @Published var errorMessage : String?
+    private let networkManager  : NetworkManager
+    
+    init(networkManager: NetworkManager? = nil) {
+        self.networkManager = networkManager ?? .shared
+    }
+    
+    func fetchSessions() async {
+        guard !isLoading else { return }
+        
+        isLoading = true
+        errorMessage = nil
+        
+        do {
+            self.sessions = try await networkManager.fetchSessions()
+        } catch {
+            self.errorMessage = "Failed to load sessions. Please pull to refresh."
+        }
+        
+        isLoading = false
+    }
+}
