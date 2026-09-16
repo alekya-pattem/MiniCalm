@@ -15,7 +15,9 @@ struct LibraryView: View {
                         }
                     } else {
                         ForEach(viewModel.sessions) { session in
-                            SessionRowView(session: session)
+                            NavigationLink(destination: PlayerViewRepresentable(session: session)) {
+                                SessionRowView(session: session)
+                            }
                         }
                     }
                 }

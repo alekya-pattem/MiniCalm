@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="MiniCalm" customModuleProvider="target">
+            <connections>
+                <outlet property="artworkImageView" destination="img-1" id="con-1"/>
+                <outlet property="elapsedTimeLabel" destination="lbl-1" id="con-2"/>
+                <outlet property="playPauseButton" destination="btn-1" id="con-3"/>
+                <outlet property="progressSlider" destination="sld-1" id="con-4"/>
+                <outlet property="remainingTimeLabel" destination="lbl-2" id="con-5"/>
+                <outlet property="speedButton" destination="btn-2" id="con-6"/>
+                <outlet property="teacherLabel" destination="lbl-3" id="con-7"/>
+                <outlet property="titleLabel" destination="lbl-4" id="con-8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="img-1">
+                    <rect key="frame" x="76.666666666666686" y="168" width="240" height="240"/>
+                    <color key="backgroundColor" white="0.85296838385317764" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="240" id="h-1"/>
+                        <constraint firstAttribute="width" constant="240" id="w-1"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-4">
+                    <rect key="frame" x="20" y="448" width="353" height="29"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teacher" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-3">
+                    <rect key="frame" x="20" y="485" width="353" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="sld-1">
+                    <rect key="frame" x="40" y="556" width="313" height="34"/>
+                    <connections>
+                        <action selector="sliderValueChanged:" destination="-1" eventType="valueChanged" id="act-1"/>
+                    </connections>
+                </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-1">
+                    <rect key="frame" x="40" y="598" width="26.333333333333329" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbl-2">
+                    <rect key="frame" x="321" y="598" width="32" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btn-1">
+                    <rect key="frame" x="171.66666666666666" y="653" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="hc-1"/>
+                        <constraint firstAttribute="width" constant="50" id="wc-1"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Play"/>
+                    <connections>
+                        <action selector="playPauseTapped:" destination="-1" eventType="touchUpInside" id="act-2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btn-2">
+                    <rect key="frame" x="40" y="661" width="70" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="wc-2"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="gray" title="1x"/>
+                    <connections>
+                        <action selector="speedTapped:" destination="-1" eventType="touchUpInside" id="act-3"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="lbl-4" firstAttribute="top" secondItem="img-1" secondAttribute="bottom" constant="40" id="c-1"/>
+                <constraint firstItem="sld-1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="c-10"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sld-1" secondAttribute="trailing" constant="40" id="c-11"/>
+                <constraint firstItem="lbl-1" firstAttribute="leading" secondItem="sld-1" secondAttribute="leading" id="c-12"/>
+                <constraint firstItem="lbl-1" firstAttribute="top" secondItem="sld-1" secondAttribute="bottom" constant="8" id="c-13"/>
+                <constraint firstItem="lbl-2" firstAttribute="trailing" secondItem="sld-1" secondAttribute="trailing" id="c-14"/>
+                <constraint firstItem="lbl-2" firstAttribute="top" secondItem="sld-1" secondAttribute="bottom" constant="8" id="c-15"/>
+                <constraint firstItem="btn-1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="c-16"/>
+                <constraint firstItem="btn-1" firstAttribute="top" secondItem="sld-1" secondAttribute="bottom" constant="63" id="c-17"/>
+                <constraint firstItem="btn-2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="c-18"/>
+                <constraint firstItem="btn-2" firstAttribute="centerY" secondItem="btn-1" secondAttribute="centerY" id="c-19"/>
+                <constraint firstItem="lbl-4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="c-2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lbl-4" secondAttribute="trailing" constant="20" id="c-3"/>
+                <constraint firstItem="img-1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="c-4"/>
+                <constraint firstItem="img-1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="c-5"/>
+                <constraint firstItem="lbl-3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="c-6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lbl-3" secondAttribute="trailing" constant="20" id="c-7"/>
+                <constraint firstItem="lbl-3" firstAttribute="top" secondItem="lbl-4" secondAttribute="bottom" constant="8" id="c-8"/>
+                <constraint firstItem="sld-1" firstAttribute="top" secondItem="lbl-3" secondAttribute="bottom" constant="50" id="c-9"/>
+            </constraints>
+            <point key="canvasLocation" x="-379" y="21"/>
+        </view>
+    </objects>
+</document>
