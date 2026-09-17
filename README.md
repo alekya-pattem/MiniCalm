@@ -7,7 +7,7 @@ MiniCalm is a 2-screen iOS application built to demonstrate modern iOS architect
 2. Xcode 16+
 3. Swift 5.9+
 
-## 🚀 How to Run
+## How to Run
 1. Clone the repository. 
 2. Open `MiniCalm.xcodeproj` in Xcode.
 3. Select an iOS Simulator running iOS 16+ or later.
@@ -16,7 +16,7 @@ MiniCalm is a 2-screen iOS application built to demonstrate modern iOS architect
 
 *The app fetches meditation session data from the provided JSON endpoint and streams the session audio using AVPlayer.*
 
-## 🏗 Architecture & Tech Stack
+## Architecture
 The project uses a simple MVVM-style structure:
 
 - SwiftUI is used for the Library screen.
