@@ -18,6 +18,7 @@ class PlayerViewController: UIViewController {
     private var player                      : AVPlayer?
     private var timeObserverToken           : Any?
     private var statusObservation           : NSKeyValueObservation?
+    private let networkMonitor              = NetworkMonitor()
     private let speeds                      : [Float] = [1.0, 1.5, 2.0]
     private var currentSpeedIndex           = 0
     private var wasPlayingBeforeScrubbing   = false
@@ -28,6 +29,13 @@ class PlayerViewController: UIViewController {
         setupUI()
         setupAudioSession()
         setupPlayer()
+        
+        // Start monitoring for instant network drops
+        networkMonitor.onConnectionLost = { [weak self] in
+            self?.player?.pause()
+            self?.handleAudioFailure(message: "Internet connection lost. Playback has been paused.")
+        }
+        networkMonitor.start()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -37,6 +45,8 @@ class PlayerViewController: UIViewController {
             removeTimeObserver()
             statusObservation?.invalidate()
             statusObservation = nil
+            networkMonitor.stop()
+            NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
         }
     }
 
@@ -91,6 +101,9 @@ class PlayerViewController: UIViewController {
             }
         }
         
+        // Listen for audio finish to reset the Play/Pause button
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
+        
         addTimeObserver()
         
         player?.play()
@@ -100,7 +113,16 @@ class PlayerViewController: UIViewController {
         applyCurrentSpeed()
     }
     
-    private func handleAudioFailure() {
+    @objc private func playerDidFinishPlaying() {
+        // Reset the audio to the beginning
+        player?.seek(to: CMTime.zero)
+        player?.pause()
+        
+        // Update the button icon back to 'Play'
+        playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+    }
+    
+    private func handleAudioFailure(message: String = "We're sorry, but the audio file for this session is missing or broken.") {
         // Disabling controls since there's no audio
         playPauseButton.isEnabled = false
         speedButton.isEnabled = false
@@ -109,7 +131,7 @@ class PlayerViewController: UIViewController {
         
         let alert = UIAlertController(
             title: "Audio Unavailable",
-            message: "We're sorry, but the audio file for this session is missing or broken.",
+            message: message,
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

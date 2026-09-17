@@ -26,16 +26,14 @@ final class LibraryViewModel: ObservableObject {
         
         isLoading = true
         errorMessage = nil
-        
+        self.sessions = []
         do {
             self.sessions = try await networkManager.fetchSessions()
         }
-//        catch let urlError as URLError where urlError.code == .notConnectedToInternet {
-//            self.sessions = []
-//            self.errorMessage = "No internet connection. Please check your network and pull to refresh."
-//        }
+        catch let urlError as URLError where urlError.code == .notConnectedToInternet {
+            self.errorMessage = "No internet connection. Please check your network and pull to refresh."
+        }
         catch {
-//            self.sessions = []
             self.errorMessage = "Failed to load sessions. Please pull to refresh."
         }
         
