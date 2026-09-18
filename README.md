@@ -42,6 +42,8 @@ The Player screen supports:
 ## What I Would Improve With More Time
 If I had more time, I would consider:
 
+- Separate the audio player logic from PlayerViewController to keep the view controller focused on UI and user interactions.
+- Spend more time improving the UI and overall user experience.
 - Improving offline behavior and allowing previously downloaded audio to play without a network connection.
 - Improving the player state handling for buffering and network interruptions.
 - Adding more detailed error states and retry handling.
